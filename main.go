@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -15,7 +16,7 @@ var todos []Todo
 
 func main() {
 	http.HandleFunc("/todos", todosHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8081", nil))
 }
 
 func todosHandler(w http.ResponseWriter, r *http.Request) {
@@ -47,11 +48,13 @@ func updateTodo(w http.ResponseWriter, r *http.Request) {
 }
 
 func getTodos(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("getTodos")
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(todos)
 }
 
 func createTodo(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("createTodo")
 	var todo Todo
 	err := json.NewDecoder(r.Body).Decode(&todo)
 	if err != nil {

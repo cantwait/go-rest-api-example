@@ -8,7 +8,7 @@ docker-build:
 
 # Create a task to run the Docker image with name golang-rest-api
 docker-run:
-	docker run -p 8080:8080 golang-rest-api:latest
+	docker run -p 8081:8081 golang-rest-api:latest
 
 test:
 	go test -v ./...
