@@ -15,3 +15,4 @@ EXPOSE 8080
 
 # Run the Go app when the container starts
 CMD ["/app/main"]
+
